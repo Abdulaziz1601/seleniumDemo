@@ -12,6 +12,14 @@ async function example() {
 
     // Add a todo
     await driver.findElement(By.id('sampletodotext')).sendKeys("Learn Selenium", Key.RETURN);
+
+    // assert
+    let todoText = await driver.findElement(By.xpath("//li[last()]")).getText().then(function (value) {
+        return value;
+    });
+
+    assert.strictEqual(todoText, "Learn Selenium")
+
     // close the browser
     await driver.quit();
 
